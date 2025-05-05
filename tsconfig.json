@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "Node16",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "moduleResolution": "node16",
+    "target": "ES2024",
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "lib": ["ES2024", "DOM"],
+  },
+  "include": ["./src/**/*.ts", "additional.d.ts"],
+  "exclude": ["**/*.spec.ts"]
+}
