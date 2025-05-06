@@ -6,8 +6,10 @@ import Home from './pages/Home';
 function App() {
   return (
     <>
-      <Header />
-
+      <div className='flex justify-center'>
+        <Header></Header>
+      </div>
+      
       <div className='bg-while-240'>
         <Home></Home>
       </div>

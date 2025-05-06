@@ -10,6 +10,7 @@ module.exports = {
         'banner-freeship': "url('assets/img/Freeship_t5_310x210.webp')",
         'menu-first': "url('assets/img/Icon_0505_120x120_1.webp')",
         'suggestion': "url('assets/img/banner_personalization.webp')",
+        'item-image': "url('assets/img/item-image.jpg')",
       },
       
       colors: {

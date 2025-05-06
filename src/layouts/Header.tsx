@@ -6,7 +6,7 @@ import ButtonSearch from '../components/buttons/ButtonSearch';
 
 function Header() {
     return (
-        <div className="w-full h-16 bg-white flex items-center content-center pl-36 pr-36">
+        <div className='w-1230 h-16 bg-white flex items-center content-center'>
             <div className="bg-contain bg-no-repeat bg-center w-56 h-16 bg-header-logo">
             </div>
 

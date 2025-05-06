@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../layouts/Banner';
-import Menu from '../layouts/Menu';
+import Menu, { MenuType } from '../layouts/Menu';
+import Item from '../components/items/Item';
 
 function Home() {
     const banners = [
@@ -22,56 +23,56 @@ function Home() {
         }
     ]
 
-    const menu = [
+    const menu: MenuType[] = [
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Day 05.05'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Flash Sale'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Patech'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Sbooks'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Ma Giam Gia'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'San Pham Moi'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'San Pham Duoc Tro Gia'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Phien Cho Cu'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Ban Si'
         },
         {
             img: '',
             url: '',
-            name: ''
+            name: 'Manga'
         },
     ]
 
@@ -82,14 +83,18 @@ function Home() {
             </div>
 
             <div className='m-7 w-1230 flex justify-center items-center bg-white rounded-md'>
-                {menu.map(m => <Menu></Menu>)}
+                {menu.map(m => (<Menu {...m} />))}
             </div>
 
-            <div className='grid grid-cols-5 w-1230 h-auto pl-5 bg-suggestion bg-no-repeat rounded-md'>
-                <div className='w-56 h-6 bg-black'>
-
+            <div className='w-1230 h-auto bg-suggestion bg-no-repeat bg-cover bg-center rounded-md'>
+                <div className='h-20 w-full'></div>
+                <div className='grid grid-cols-5 ml-5'>
+                    <Item/>
+                    <Item/>
+                    <Item/>
+                    <Item/>
+                    <Item/>
                 </div>
-
             </div>
         </div>
     );
