@@ -4,9 +4,8 @@ import React from 'react';
 
 function ButtonSearch() {
     return (
-        <div className='w-16 h-7 bg-red-201 flex justify-center items-center rounded'>
-            <FontAwesomeIcon icon={ faSearch } 
-                className='w-5 h-5 text-white'/>
+        <div className='w-16 h-7 mr-1 bg-red-201 flex justify-center items-center rounded cursor-pointer'>
+            <FontAwesomeIcon icon={ faSearch } className='w-5 h-5 text-slate-200'/>
         </div>
     );
 }

@@ -5,15 +5,28 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // backgroundImage: {
-      //   'header-logo': "url('/assets/img/fahasa-logo.webp')",
-      // }
-    },
-    // width: {
-    //   '146.5': '586px',
-    // },
-    colors: {
+      backgroundImage: {
+        'header-logo': "url('assets/img/fahasa-logo.webp')",
+        'banner-freeship': "url('assets/img/Freeship_t5_310x210.webp')",
+        'menu-first': "url('assets/img/Icon_0505_120x120_1.webp')",
+        'suggestion': "url('assets/img/banner_personalization.webp')",
+      },
+      
+      colors: {
       'red-201': 'rgb(201, 32, 38)',
+      },
+
+      width: {
+        '123': '123px',
+        '232': '232px',
+        '310': '310px',
+        '584': '584px',
+        '1230': '1230px'
+      },
+
+      backgroundColor: {
+        'while-240': 'rgb(240, 240, 240)'
+      }
     },
   },
   plugins: [],
