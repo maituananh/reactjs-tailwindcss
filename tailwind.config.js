@@ -11,10 +11,12 @@ module.exports = {
         'menu-first': "url('assets/img/Icon_0505_120x120_1.webp')",
         'suggestion': "url('assets/img/banner_personalization.webp')",
         'item-image': "url('assets/img/item-image.jpg')",
+        'flash-sale-image': "url('assets/img/flash_sale_background_image.webp')",
       },
       
       colors: {
       'red-201': 'rgb(201, 32, 38)',
+      'orange-235': 'rgb(235, 92, 21)'
       },
 
       width: {
@@ -23,6 +25,11 @@ module.exports = {
         '310': '310px',
         '584': '584px',
         '1230': '1230px'
+      },
+
+      height: {
+        '336': '336px',
+        '340': '340px',
       },
 
       backgroundColor: {

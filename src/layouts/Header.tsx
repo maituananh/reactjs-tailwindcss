@@ -11,7 +11,7 @@ function Header() {
             </div>
 
             <div className='w-24 h-full flex items-center ml-12'>
-                <FontAwesomeIcon icon={ faBars } className='w-9 h-9 text-gray-400' />
+                <FontAwesomeIcon icon={ faBars } className='w-7 h-7 text-gray-400' />
                 <FontAwesomeIcon icon={ faCaretDown } className='w-4 h-4 text-gray-400' />
             </div>
 
