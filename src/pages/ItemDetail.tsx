@@ -6,6 +6,14 @@ import ItemDescription from "../components/items/ItemDescription";
 import ShipInforView from "../components/views/ShipInforView";
 
 function ItemDetail() {
+    const handleClickAddToCart = () => {
+        console.log('click to add');
+    }
+
+    const handleClickBuy = () => {
+        console.log('click to buy');
+    }
+
     return(
         <div className="mt-5 w-1230">
             <div className="grid grid-cols-12 gap-5">
@@ -33,12 +41,14 @@ function ItemDetail() {
                                 textColor="text-red-700"
                                 border="border-2 border-red-700"
                                 icon = {faCartShopping}
+                                handleClick={ handleClickAddToCart }
                          />
                          <Button  
                                 bg='bg-red-700'
                                 name='Đặt trước'
                                 textColor="text-white"
-                                border="text-red-700"
+                                border="text-red-700 border-2"
+                                handleClick={ handleClickBuy }
                          />
                     </div>
                     <div className="font-semibold ml-4 mr-4 space-y-2 mt-5 mb-5">

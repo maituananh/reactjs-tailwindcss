@@ -9,11 +9,13 @@ type ButtonType = {
     textColor: string,
     border: string,
     icon?: IconProp,
+    handleClick: () => void
 }
 
 function Button(prop: ButtonType) {
     return (
-        <div className={classNames(prop.bg, prop.border, 'flex items-center justify-center w-56 h-full rounded-md')}>
+        <div className={classNames(prop.bg, prop.border, 'flex items-center justify-center w-56 h-full rounded-md box-border cursor-pointer select-none')} 
+             onClick={prop.handleClick}>
             {
                 prop.icon ? <FontAwesomeIcon icon={ prop.icon } className={classNames('w-4 h-4 mr-2', prop.textColor)}/> : ''
             }
