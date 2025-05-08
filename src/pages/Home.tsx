@@ -4,8 +4,9 @@ import React from 'react';
 import CategoryItem from '../components/items/CategoryItem';
 import Item from '../components/items/Item';
 import Banner from '../layouts/Banner';
-import Menu, { MenuType } from '../layouts/Menu';
+import Menu from '../layouts/Menu';
 import SuggestionView from '../components/views/SuggestionView';
+import { MenuType } from '../types/MenuType';
 
 function Home() {
     const banners = [

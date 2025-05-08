@@ -1,10 +1,5 @@
 import React from 'react';
-
-export type MenuType = {
-    img: string;
-    url: string;
-    name: string;
-};
+import { MenuType } from '../types/MenuType';
 
 function Menu(props: MenuType) {
     return (
