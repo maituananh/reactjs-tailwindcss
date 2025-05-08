@@ -7,8 +7,7 @@ import ButtonSearch from '../components/buttons/ButtonSearch';
 function Header() {
     return (
         <div className='w-1230 h-16 bg-white flex items-center content-center'>
-            <div className="bg-contain bg-no-repeat bg-center w-56 h-16 bg-header-logo">
-            </div>
+            <a href='/' className="bg-contain bg-no-repeat bg-center w-56 h-16 bg-header-logo"></a>
 
             <div className='w-24 h-full flex items-center ml-12'>
                 <FontAwesomeIcon icon={ faBars } className='w-7 h-7 text-gray-400' />

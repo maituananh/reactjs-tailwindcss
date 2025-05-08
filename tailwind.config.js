@@ -12,11 +12,13 @@ module.exports = {
         'suggestion': "url('assets/img/banner_personalization.webp')",
         'item-image': "url('assets/img/item-image.jpg')",
         'flash-sale-image': "url('assets/img/flash_sale_background_image.webp')",
+        'badge-percent': "url('assets/icons/badge-percent.svg')"
       },
       
       colors: {
-      'red-201': 'rgb(201, 32, 38)',
-      'orange-235': 'rgb(235, 92, 21)'
+        'red-201': 'rgb(201, 32, 38)',
+        'orange-235': 'rgb(235, 92, 21)',
+        'blue-201': 'rgb(201, 240, 255)'
       },
 
       width: {
@@ -34,7 +36,7 @@ module.exports = {
 
       backgroundColor: {
         'while-240': 'rgb(240, 240, 240)'
-      }
+      },
     },
   },
   plugins: [],

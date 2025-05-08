@@ -4,19 +4,23 @@ import Header from './layouts/Header';
 import Home from './pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import ItemDetail from './pages/ItemDetail';
+import Footer from './layouts/Footer';
+import SearchItem from './pages/SearchItem';
 
 function App() {
   return (
-    <>
-      <div className='flex justify-center'>
-        <Header></Header>
+    <div className='bg-while-240'>
+      <div className='flex justify-center bg-white'>
+        <Header />
       </div>
       
-      <div className='bg-while-240 flex justify-center'>
+      <div className='flex justify-center'>
         <Routes>
           <Route path='/'>
             <Route index element={<Home />} />
-            <Route path='detail' element={ <ItemDetail />} />
+            <Route path='products' element={ <ItemDetail />} />
+
+            <Route path='searchengine' element={ <SearchItem /> } />
           </Route>
 
           {/* <Route element={<AuthLayout />}>
@@ -25,7 +29,11 @@ function App() {
           </Route> */}
         </Routes>
       </div>
-    </>
+
+      <div className='flex justify-center'>
+        <Footer />
+      </div>
+    </div>
   );
 }
 

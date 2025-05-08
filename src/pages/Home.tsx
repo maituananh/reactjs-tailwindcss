@@ -5,6 +5,7 @@ import CategoryItem from '../components/items/CategoryItem';
 import Item from '../components/items/Item';
 import Banner from '../layouts/Banner';
 import Menu, { MenuType } from '../layouts/Menu';
+import SuggestionView from '../components/views/SuggestionView';
 
 function Home() {
     const banners = [
@@ -123,16 +124,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className='w-1230 h-auto bg-suggestion bg-no-repeat bg-cover bg-center rounded-md mt-5'>
-                <div className='h-20 w-full'></div>
-                <div className='grid grid-cols-5 ml-5'>
-                    {
-                        Array.from({ length: 5 }).map((_, i) => (
-                            <Item key={i} />
-                        ))
-                    }
-                </div>
-            </div>
+            <SuggestionView />
         </div>
     );
 }

@@ -1,15 +1,18 @@
-import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowTrendUp, faBox, faCarSide, faCartShopping, faGreaterThan, faShop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import Button from "../components/buttons/Button";
+import ItemDescription from "../components/items/ItemDescription";
+import ShipInforView from "../components/views/ShipInforView";
 
 function ItemDetail() {
     return(
-        <div className="w-1230">
+        <div className="mt-5 w-1230">
             <div className="grid grid-cols-12 gap-5">
-                <div className="col-span-5 bg-white w-full rounded-lg">
+                <div className="col-span-5 bg-white w-full h-full rounded-lg">
                     <div className="flex justify-center">
                         <img 
-                        className="w-full h-full"
+                        className="w-11/12 h-full"
                         src="https://cdn1.fahasa.com/media/catalog/product/t/_/t_-tr_-th_ng-gi_m-4.jpg"/>
                     </div>
                     <div className="flex justify-center mt-4">
@@ -23,10 +26,55 @@ function ItemDetail() {
                             ))
                         }
                     </div>
+                    <div className="flex justify-around mt-4">
+                        <Button  
+                                bg='bg-white'
+                                name='Thêm vào giỏ hàng'
+                                textColor="text-red-700"
+                                border="border-2 border-red-700"
+                                icon = {faCartShopping}
+                         />
+                         <Button  
+                                bg='bg-red-700'
+                                name='Đặt trước'
+                                textColor="text-white"
+                                border="text-red-700"
+                         />
+                    </div>
+                    <div className="font-semibold ml-4 mr-4 space-y-2 mt-5 mb-5">
+                        <p>Chính sách ưu đãi của Fahasa</p>
+                        <div className="flex text-sm items-center justify-between">
+                            <div className="flex items-center">
+                                <div className="w-6">
+                                    <FontAwesomeIcon icon={ faCarSide } className="text-red-600" />
+                                </div>
+                                <p>Thời gian giao hàng: <span className="font-thin">Giao hàng uy tín</span></p>
+                            </div>
+                            <FontAwesomeIcon icon={ faGreaterThan } className="text-gray-500" />
+                        </div>
+                        <div className="flex text-sm items-center justify-between">
+                            <div className="flex items-center">
+                                <div className="w-6">
+                                    <FontAwesomeIcon icon={ faBox } className="text-red-600" />
+                                </div>
+                                <p>Chính sách đổi trả: <span className="font-thin">Đổi trả miễn phí toàn quốc</span></p>
+                            </div>
+                            <FontAwesomeIcon icon={ faGreaterThan } className="text-gray-500"/>
+                        </div>
+                        <div className="flex text-sm items-center justify-between">
+                            <div className="flex items-center">
+                                <div className="w-6">
+                                    <FontAwesomeIcon icon={ faShop } className="text-red-600" />
+                                </div>
+                                <p>Chính sách khách sỉ: <span className="font-thin">Ưu đãi khi mua số lượng lớn</span></p>
+                            </div>
+                            <FontAwesomeIcon icon={ faGreaterThan } className="text-gray-500"/>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="col-span-7 bg-white rounded-lg h-max">
-                    <div className="ml-4">
+                <div className="col-span-7 h-max">
+                    <div className="pl-4 pt-4 pb-4 bg-white rounded-lg">
                         <div className="flex items-center">
                             <div className="flex items-center justify-center bg-orange-235 text-white w-24 h-5 rounded-md">
                                 <p>Xu hướng</p>
@@ -51,6 +99,14 @@ function ItemDetail() {
                                 <p className="text-center">-50%</p>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="mt-4 pl-4 bg-white rounded-lg">
+                        <ShipInforView />
+                    </div>
+
+                    <div className="mt-4 pl-4 bg-white rounded-lg">
+                        <ItemDescription />
                     </div>
                 </div>
             </div>

@@ -1724,6 +1724,11 @@
     magic-string "^0.25.0"
     string.prototype.matchall "^4.0.6"
 
+"@svg-icons/fa-brands@^1.87.0":
+  version "1.87.0"
+  resolved "https://registry.yarnpkg.com/@svg-icons/fa-brands/-/fa-brands-1.87.0.tgz#16f4c55dd29c908e245396c9fb4a0cff635552ef"
+  integrity sha512-Ycj4EoUimk66DLR9kvigiogHBmFVGp8MLQcpbiyXuzMTuK48yL6rKyjj7UdWLuLike89Xu5CvfdBnxtF1x6utQ==
+
 "@svgr/babel-plugin-add-jsx-attribute@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-5.4.0.tgz#81ef61947bb268eb9d50523446f9c638fb355906"
@@ -3518,6 +3523,11 @@ cjs-module-lexer@^1.0.0:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.4.3.tgz#0f79731eb8cfe1ec72acd4066efac9d61991b00d"
   integrity sha512-9z8TZaGM1pfswYeXrUpzPrkx8UnWYdhJclsiYMm6x/w5+nN+8Tf/LnAgfLGQCm59qAOxU8WwHEq2vNwF6i4j+Q==
+
+classnames@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 clean-css@^5.2.2:
   version "5.3.3"
