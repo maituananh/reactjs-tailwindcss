@@ -1,39 +1,28 @@
-import React from 'react';
-import './App.css';
-import Header from './layouts/Header';
-import Home from './pages/Home';
-import { Route, Routes } from 'react-router-dom';
-import ItemDetail from './pages/ItemDetail';
-import Footer from './layouts/Footer';
-import SearchItem from './pages/SearchItem';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import { DefaultLayout } from "./layouts";
+import { publicRoutes } from "./routes";
 
 function App() {
   return (
-    <div className='bg-while-240'>
-      <div className='flex justify-center bg-white'>
-        <Header />
-      </div>
-      
-      <div className='flex justify-center'>
-        <Routes>
-          <Route path='/'>
-            <Route index element={<Home />} />
-            <Route path='products' element={ <ItemDetail />} />
+    <Routes>
+      {publicRoutes.map((route, index) => {
+        const Layout = route.layout ?? DefaultLayout;
+        const Page = route.component;
 
-            <Route path='searchengine' element={ <SearchItem /> } />
-          </Route>
-
-          {/* <Route element={<AuthLayout />}>
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-          </Route> */}
-        </Routes>
-      </div>
-
-      <div className='flex justify-center'>
-        <Footer />
-      </div>
-    </div>
+        return (
+          <Route
+            key={index}
+            path={route.path}
+            element={
+              <Layout>
+                <Page />
+              </Layout>
+            }
+          />
+        );
+      })}
+    </Routes>
   );
 }
 

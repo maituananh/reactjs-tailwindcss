@@ -11,6 +11,10 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "lib": ["ES2024", "DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
   "include": ["./src/**/*.ts", "additional.d.ts"],
   "exclude": ["**/*.spec.ts"]

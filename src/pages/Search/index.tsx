@@ -1,6 +1,6 @@
 import React from "react";
-import DropdownList from "../components/dropdowns/Dropdown";
-import Item from "../components/items/Item";
+import DropdownList from "../../components/dropdowns/Dropdown";
+import Item from "../../components/items/Item";
 
 function SearchItem() {
     return (
