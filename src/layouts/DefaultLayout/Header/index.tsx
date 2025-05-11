@@ -5,8 +5,9 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 import { Link } from "react-router-dom";
-import ButtonSearch from "../../../components/buttons/ButtonSearch";
+import Search from "../../../components/Search";
 import routes from "../../../configs/routes";
 
 function Header() {
@@ -22,10 +23,7 @@ function Header() {
         <FontAwesomeIcon icon={faCaretDown} className="w-4 h-4 text-gray-400" />
       </div>
 
-      <div className="h-9 w-584 flex items-center border-slate-300 border-2 rounded-lg">
-        <input className="outline-none ml-8 mr-1 w-full" />
-        <ButtonSearch />
-      </div>
+      <Search />
 
       <div className="w-16 text-center ml-9">
         <FontAwesomeIcon icon={faBell} className="w-6 h-6" />

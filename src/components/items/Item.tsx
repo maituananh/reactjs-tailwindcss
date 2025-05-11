@@ -3,14 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import routes from "../../configs/routes";
 import { BookData } from "../../types/Book";
+import { cutStringByLength } from "../../utils/stringUtils";
 
-function Item(book: BookData) {
+function Item({ book }: { book: BookData }) {
   return (
     <div
       className={`w-11/12 h-80 flex flex-col bg-white rounded-md mt-2 hover:border-gray-400 shadow hover:shadow-slate-700 transition-shadow`}
     >
       <Link
-        to={routes.productDetail}
+        to={routes.productDetail.replace(":id", book.isbn13)}
         className="flex justify-center items-center mt-2"
       >
         <img
@@ -18,9 +19,9 @@ function Item(book: BookData) {
           className="bg-item-image h-48 w-full bg-no-repeat bg-center bg-contain border-white border-2 rounded-md"
         />
       </Link>
-      <div className="ml-3 flex flex-1 flex-wrap content-between mb-2">
+      <div className="ml-3 mr-3 flex flex-1 flex-wrap content-between mb-2">
         <div>
-          <p className="text-sm">{book.title}</p>
+          <p className="text-sm">{cutStringByLength(book.title)}</p>
         </div>
         <div>
           <div className="flex items-center">

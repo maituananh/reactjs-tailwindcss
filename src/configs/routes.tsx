@@ -1,6 +1,6 @@
 const routes = {
   home: "/",
-  productDetail: "/product/:itemId",
+  productDetail: "/product/:id",
   search: "/search",
 };
 

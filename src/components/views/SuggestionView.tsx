@@ -1,19 +1,20 @@
-import React from "react";
+import { BookData } from "../../types/Book";
+import NewBook from "../../types/NewBook";
 import Item from "../items/Item";
 
-function SuggestionView() {
-    return (
-        <div className='w-1230 h-auto bg-suggestion bg-no-repeat bg-cover bg-center rounded-md mt-5'>
-            <div className='h-20 w-full'></div>
-            <div className='grid grid-cols-5 ml-5'>
-                {
-                    Array.from({ length: 5 }).map((_, i) => (
-                        <Item key={i} />
-                    ))
-                }
-            </div>
-        </div>
-    );
+function SuggestionView({ newBooks }: { newBooks: NewBook }) {
+  return (
+    <div className="w-1230 h-auto bg-suggestion bg-no-repeat bg-contain rounded-md mt-5">
+      <div className="h-20 w-full"></div>
+      <div className="grid grid-cols-5 ml-5">
+        {newBooks
+          ? newBooks.books.map((book: BookData) => {
+              return <Item key={book.isbn13} book={book} />;
+            })
+          : []}
+      </div>
+    </div>
+  );
 }
 
 export default SuggestionView;

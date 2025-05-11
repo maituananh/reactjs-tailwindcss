@@ -7,16 +7,27 @@ import {
   faShop,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../../components/buttons/Button";
 import ItemDescription from "../../components/items/ItemDescription";
 import ShipInforView from "../../components/views/ShipInforView";
+import { getItemById } from "../../services/productDetailService";
+import { BookDetail } from "../../types/BookDetail";
 
 function ItemDetail() {
-  const { itemId } = useParams();
+  const { id } = useParams();
 
-  useEffect(() => {}, []);
+  const [item, setItem] = useState<BookDetail>();
+
+  useEffect(() => {
+    const getItem = async () => {
+      const item = await getItemById(id);
+      setItem(item);
+    };
+
+    getItem();
+  }, [id]);
 
   const handleClickAddToCart = () => {
     console.log("click to add");
@@ -31,17 +42,14 @@ function ItemDetail() {
       <div className="grid grid-cols-12 gap-5">
         <div className="col-span-5 bg-white w-full h-full rounded-lg">
           <div className="flex justify-center">
-            <img
-              className="w-11/12 h-full"
-              src="https://cdn1.fahasa.com/media/catalog/product/t/_/t_-tr_-th_ng-gi_m-4.jpg"
-            />
+            <img className="w-11/12 h-full" src={item?.image} />
           </div>
           <div className="flex justify-center mt-4">
-            {[1, 2, 3, 4, 5].map((item, index) => (
+            {[1, 2, 3, 4, 5].map((_, index) => (
               <div key={index} className="ml-2">
                 <img
                   className="w-20 h-20 bg-no-repeat bg-center bg-contain"
-                  src="https://cdn1.fahasa.com/media/catalog/product/t/_/t_-tr_-th_ng-gi_m-4.jpg"
+                  src={item?.image}
                 />
               </div>
             ))}
@@ -114,9 +122,7 @@ function ItemDetail() {
                   className="w-4 h-4 ml-1"
                 />
               </div>
-              <p className="text-2xl font-medium ml-2">
-                Các Triều Đại Việt Nam
-              </p>
+              <p className="text-2xl font-medium ml-2">{item?.title}</p>
             </div>
             <div className="flex justify-between mt-4 mr-24 text-sm">
               <div className="">
@@ -128,13 +134,12 @@ function ItemDetail() {
                 </p>
                 <p>
                   Nhà xuất bản:{" "}
-                  <span className="font-bold">NXB Thanh Niên</span>
+                  <span className="font-bold">{item?.publisher}</span>
                 </p>
               </div>
               <div className="">
                 <p>
-                  Tác giả:{" "}
-                  <span className="font-bold">Huy Hoang BookStore</span>
+                  Tác giả: <span className="font-bold">{item?.authors}</span>
                 </p>
                 <p>
                   Hình thức bìa:{" "}
@@ -143,7 +148,7 @@ function ItemDetail() {
               </div>
             </div>
             <div className="flex items-center mt-6">
-              <p className="text-3xl font-medium text-red-700">60.000 đ</p>
+              <p className="text-3xl font-medium text-red-700">{item?.price}</p>
               <del className="text-gray-500 ml-3">60.000 đ</del>
               <div className="bg-red-700 text-white rounded-md ml-3 w-10">
                 <p className="text-center">-50%</p>
@@ -156,7 +161,7 @@ function ItemDetail() {
           </div>
 
           <div className="mt-4 pl-4 bg-white rounded-lg">
-            <ItemDescription />
+            <ItemDescription item={item!} />
           </div>
         </div>
       </div>

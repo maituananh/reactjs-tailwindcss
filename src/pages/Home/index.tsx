@@ -6,9 +6,11 @@ import Item from "../../components/items/Item";
 import SuggestionView from "../../components/views/SuggestionView";
 import Banner from "../../layouts/Banner";
 import Menu from "../../layouts/Menu";
+import { getNewProducts } from "../../services/newproductsService";
 import { searchItems } from "../../services/searchService";
 import { BookData } from "../../types/Book";
 import { MenuType } from "../../types/MenuType";
+import NewBook from "../../types/NewBook";
 
 function Home() {
   const banners = [
@@ -84,14 +86,19 @@ function Home() {
   ];
 
   const [products, setProduct] = useState<BookData[]>();
+  const [newProducts, setnewProducts] = useState<NewBook>();
 
   useEffect(() => {
-    const fetchItems = async () => {
-      const items = await searchItems();
-      setProduct(items);
+    const fetchData = async () => {
+      Promise.all([getNewProducts(), searchItems()]).then(
+        ([newItems, items]) => {
+          setnewProducts(newItems);
+          setProduct(items);
+        }
+      );
     };
 
-    fetchItems();
+    fetchData();
   }, []);
 
   return (
@@ -122,7 +129,7 @@ function Home() {
           <div className="w-1230 mt-3 mb-5">
             <div className="grid grid-cols-5">
               {products?.map((product, index) => (
-                <Item key={index} {...product} />
+                <Item key={index} book={product} />
               ))}
             </div>
           </div>
@@ -144,7 +151,7 @@ function Home() {
         </div>
       </div>
 
-      <SuggestionView />
+      <SuggestionView newBooks={newProducts!} />
     </div>
   );
 }
