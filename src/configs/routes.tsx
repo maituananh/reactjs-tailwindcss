@@ -1,7 +1,7 @@
 const routes = {
   home: "/",
   productDetail: "/product/:id",
-  search: "/search",
+  search: "/search/:searchValue",
 };
 
 export default routes;
