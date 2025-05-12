@@ -1,11 +1,11 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import Banner from "../../components/banner";
 import CategoryItem from "../../components/items/CategoryItem";
 import Item from "../../components/items/Item";
+import Menu from "../../components/menu";
 import SuggestionView from "../../components/views/SuggestionView";
-import Banner from "../../layouts/Banner";
-import Menu from "../../layouts/Menu";
 import { getNewProducts } from "../../services/newproductsService";
 import { searchItems } from "../../services/searchService";
 import { BookData } from "../../types/Book";

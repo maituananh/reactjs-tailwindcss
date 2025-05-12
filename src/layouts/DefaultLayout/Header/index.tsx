@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Button from "../../../components/buttons/Button";
 import Search from "../../../components/Search";
 import routes from "../../../configs/routes";
 
@@ -34,9 +35,32 @@ function Header() {
         <p className="text-xs">Giỏ Hàng</p>
       </div>
 
-      <div className="w-16 text-center">
-        <FontAwesomeIcon icon={faUser} className="w-6 h-6" />
-        <p className="text-xs">Tài Khoản</p>
+      <div className="relative">
+        <div className="w-16 text-center cursor-pointer">
+          <FontAwesomeIcon icon={faUser} className="w-6 h-6" />
+          <p className="text-xs">Tài Khoản</p>
+        </div>
+
+        <div className="w-64 h-32 mt-3 absolute right-[0] bg-white flex flex-col items-center justify-center rounded-md">
+          <div>
+            <Button
+              name="Đăng nhập"
+              bg="bg-red-201"
+              textColor="text-white"
+              border="border-red-201"
+              handleClick={() => {}}
+            ></Button>
+          </div>
+          <div className="mt-2">
+            <Button
+              name="Đăng ký"
+              bg="bg-while"
+              textColor="text-red-201"
+              border="border-red-201"
+              handleClick={() => {}}
+            ></Button>
+          </div>
+        </div>
       </div>
     </div>
   );
