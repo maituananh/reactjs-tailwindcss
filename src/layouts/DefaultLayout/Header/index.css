@@ -1,0 +1,19 @@
+.header__account-group-buttons {
+    display: none;
+    margin-top: 10px;
+}
+
+.header__account:hover .header__account-group-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.header__account-group-buttons::after {
+    content: "";
+    width: 60px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: -15px;
+    background: rgba(0,0,0,0.0);
+}

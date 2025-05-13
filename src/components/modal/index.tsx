@@ -1,9 +1,24 @@
-function Modal({ handleClick }: { handleClick: () => void }) {
+import classNames from "classnames";
+
+function Modal({
+  children,
+  handleClick,
+  css = "top-0",
+}: {
+  children?;
+  handleClick?: () => void;
+  css?: string;
+}) {
   return (
     <div
       onClick={handleClick}
-      className="fixed z-[0] w-full h-full left-0 top-16 bg-modal"
-    ></div>
+      className={classNames(
+        "header__search-modal fixed z-[0] w-full h-full left-0 bg-modal",
+        css
+      )}
+    >
+      {children}
+    </div>
   );
 }
 

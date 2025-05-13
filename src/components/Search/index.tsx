@@ -7,22 +7,19 @@ import { Link } from "react-router-dom";
 import routes from "../../configs/routes";
 import ButtonSearch from "../buttons/ButtonSearch";
 import Modal from "../modal";
+import "./index.css";
 
 function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [searchSuggestionValue, setSearchSuggestion] = useState(false);
 
-  const onClickModal = () => {
-    setSearchSuggestion(false);
-  };
+  window.addEventListener("scroll", () => setSearchSuggestion(false));
 
   return (
-    <div className="relative">
+    <div className="relative" onMouseLeave={() => setSearchSuggestion(false)}>
       <div className="h-9 w-584 flex items-center border-slate-300 border-2 rounded-lg">
         <input
-          onFocus={() => {
-            setSearchSuggestion(true);
-          }}
+          onClick={() => setSearchSuggestion(true)}
           className="outline-none ml-8 mr-1 w-full"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
@@ -36,9 +33,10 @@ function Search() {
           <ButtonSearch />
         </Link>
       </div>
+
       <div
         className={classNames(
-          "absolute top-[50px] before:content-[''] before:block bg-white w-full rounded-md",
+          "header__search-suggestion absolute top-[50px] before:content-[''] before:block bg-white w-full rounded-md",
           searchSuggestionValue ? "block z-[1]" : "hidden"
         )}
       >
@@ -63,7 +61,7 @@ function Search() {
               <FontAwesomeIcon icon={faXmark} className="ml-2 cursor-pointer" />
             </li>
           </ul>
-          <div className="flex items-center mt-3 border-t-2">
+          <div className="flex items-center mt-3 pt-2 border-t-2">
             <FontAwesomeIcon icon={faArrowTrendUp} />
             <p className="ml-2 font-semibold text-lg">Từ khoá hot</p>
           </div>
@@ -93,7 +91,7 @@ function Search() {
         </div>
       </div>
       {searchSuggestionValue ? (
-        <Modal handleClick={onClickModal} />
+        <Modal css="top-16" handleClick={() => setSearchSuggestion(false)} />
       ) : (
         <Fragment />
       )}

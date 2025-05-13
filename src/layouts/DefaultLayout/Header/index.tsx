@@ -5,14 +5,23 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/buttons/Button";
+import Modal from "../../../components/modal";
 import Search from "../../../components/Search";
 import routes from "../../../configs/routes";
+import "./index.css";
 
 function Header() {
+  const [isShowLoginForm, setIsShowLoginForm] = useState(false);
+
+  const handleClickLogin = () => {
+    setIsShowLoginForm(true);
+  };
+
   return (
-    <div className="w-1230 h-16 bg-white flex items-center content-center">
+    <div className="header w-1230 h-16 bg-white flex items-center content-center">
       <Link
         to={routes.home}
         className="bg-contain bg-no-repeat bg-center w-56 h-16 bg-header-logo"
@@ -35,20 +44,20 @@ function Header() {
         <p className="text-xs">Giỏ Hàng</p>
       </div>
 
-      <div className="relative">
-        <div className="w-16 text-center cursor-pointer">
+      <div className="relative header__account">
+        <div className="w-16 text-center cursor-pointer group-hover:text-red-500 transition duration-200">
           <FontAwesomeIcon icon={faUser} className="w-6 h-6" />
           <p className="text-xs">Tài Khoản</p>
         </div>
 
-        <div className="w-64 h-32 mt-3 absolute right-[0] bg-white flex flex-col items-center justify-center rounded-md">
+        <div className="header__account-group-buttons w-64 h-32 absolute right-[0] bg-white items-center justify-center rounded-md">
           <div>
             <Button
               name="Đăng nhập"
               bg="bg-red-201"
               textColor="text-white"
               border="border-red-201"
-              handleClick={() => {}}
+              handleClick={handleClickLogin}
             ></Button>
           </div>
           <div className="mt-2">
@@ -62,6 +71,23 @@ function Header() {
           </div>
         </div>
       </div>
+
+      <Modal css={isShowLoginForm ? "block" : "hidden"}>
+        <div className="">
+          <div>
+            <p>Đăng nhập</p>
+            <p>Đăng ký</p>
+          </div>
+          <div>
+            <p>Số điện thoại/Email</p>
+            <input type="text" />
+          </div>
+          <div>
+            <p>Số điện thoại/Email</p>
+            <input type="text" />
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }
