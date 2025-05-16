@@ -20,6 +20,7 @@ module.exports = {
         "orange-235": "rgb(235, 92, 21)",
         "blue-201": "rgb(201, 240, 255)",
         modal: "rgba(0, 0, 0, 0.3)",
+        "while-blue": "rgb(250, 252, 255)",
       },
 
       width: {

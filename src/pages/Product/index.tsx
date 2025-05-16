@@ -21,6 +21,8 @@ function ItemDetail() {
   const [item, setItem] = useState<BookDetail>();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const getItem = async () => {
       const item = await getItemById(id);
       setItem(item);
@@ -114,8 +116,8 @@ function ItemDetail() {
 
         <div className="col-span-7 h-max">
           <div className="pl-4 pt-4 pb-4 bg-white rounded-lg">
-            <div className="flex items-center">
-              <div className="flex items-center justify-center bg-orange-235 text-white w-24 h-5 rounded-md">
+            <div className="flex">
+              <div className="flex items-center justify-center mt-2 bg-orange-235 text-white w-24 h-5 rounded-md min-w-24">
                 <p>Xu hướng</p>
                 <FontAwesomeIcon
                   icon={faArrowTrendUp}

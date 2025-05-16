@@ -16,6 +16,6 @@
       "~/*": ["src/*"]
     }
   },
-  "include": ["./src/**/*.ts", "additional.d.ts"],
+  "include": ["./src/**/*.ts", "additional.d.ts", "src/layouts/index.js"],
   "exclude": ["**/*.spec.ts"]
 }

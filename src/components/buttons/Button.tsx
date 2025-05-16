@@ -11,18 +11,18 @@ function Button({
   handleClick,
 }: {
   name: string;
-  bg: string;
-  textColor: string;
-  border: string;
+  bg?: string;
+  textColor?: string;
+  border?: string;
   icon?: IconProp;
-  handleClick: () => void;
+  handleClick?: () => void;
 }) {
   return (
     <div
       className={classNames(
+        "flex items-center justify-center w-56 h-full rounded-md box-border cursor-pointer select-none border-2",
         bg,
-        border,
-        "flex items-center justify-center w-56 h-full rounded-md box-border cursor-pointer select-none border-2"
+        border
       )}
       onClick={handleClick}
     >
