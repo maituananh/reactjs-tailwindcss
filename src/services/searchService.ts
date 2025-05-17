@@ -1,5 +1,5 @@
+import { get } from "@/utils/httpRequest";
 import { BookData } from "../types/Book";
-import { get } from "../utils/httpRequest";
 
 export const searchItems = async (
   searchValue: string = "10/1"

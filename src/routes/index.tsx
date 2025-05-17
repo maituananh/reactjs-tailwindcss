@@ -1,8 +1,8 @@
+import routes from "@/configs/routes";
 import ItemDetail from "@pages/[Product]";
 import Home from "@pages/Home";
 import Login from "@pages/Login";
 import SearchItem from "@pages/Search";
-import routes from "../configs/routes";
 
 const publicRoutes = [
   { path: routes.home, component: Home, layout: null },
