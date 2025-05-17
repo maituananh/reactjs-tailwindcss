@@ -15,8 +15,8 @@ function Item({ book }: { book: BookData }) {
         className="flex justify-center items-center mt-2"
       >
         <img
-          src={book.image}
-          className="bg-item-image h-48 w-full bg-no-repeat bg-center bg-contain border-white border-2 rounded-md"
+          src={book.image ?? "https://itbook.store/img/books/9781430259831.png"}
+          className="h-48 w-full bg-no-repeat bg-center bg-contain border-white border-2 rounded-md"
         />
       </Link>
       <div className="ml-3 mr-3 flex flex-1 flex-wrap content-between mb-2">

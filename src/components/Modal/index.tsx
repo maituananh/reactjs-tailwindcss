@@ -1,11 +1,12 @@
 import classNames from "classnames";
+import { JSX } from "react";
 
 function Modal({
   children,
   handleClick,
   css = "top-0",
 }: {
-  children?;
+  children?: JSX.Element;
   handleClick?: () => void;
   css?: string;
 }) {

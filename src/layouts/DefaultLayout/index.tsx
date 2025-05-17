@@ -1,7 +1,8 @@
+import { JSX } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 
-function DefaultLayout({ children }) {
+function DefaultLayout({ children }: { children: JSX.Element }) {
   return (
     <div className="bg-while-240">
       <div className="flex justify-center bg-white">

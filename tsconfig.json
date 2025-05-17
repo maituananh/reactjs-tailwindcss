@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "module": "Node16",
     "noImplicitAny": true,
     "removeComments": true,
@@ -10,12 +11,21 @@
     "target": "ES2024",
     "skipLibCheck": true,
     "strictNullChecks": true,
+    "strict": true,
     "lib": ["ES2024", "DOM"],
-    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "baseUrl": "src",
     "paths": {
-      "~/*": ["src/*"]
+      "@/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@pages/*": ["./pages/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@services/*": ["./services/*"],
+      "@utils/*": ["./utils/*"],
+      "@layouts/*": ["./layouts/*"],
+      "@routes/*": ["./routes/*"],
     }
   },
-  "include": ["./src/**/*.ts", "additional.d.ts", "src/layouts/index.js"],
-  "exclude": ["**/*.spec.ts"]
+  "include": ["src", "./src/**/*.ts", "additional.d.ts", "src/layouts/index.ts"],
+  "exclude": ["**/*.spec.ts", "node_modules"]
 }

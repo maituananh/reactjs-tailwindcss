@@ -8,36 +8,54 @@ function Button({
   textColor,
   border,
   icon,
+  width = "w-56",
+  height = "h-full",
+  margin = "",
   handleClick,
 }: {
-  name: string;
+  name?: string;
   bg?: string;
   textColor?: string;
   border?: string;
   icon?: IconProp;
+  width?: string;
+  height?: string;
+  margin?: string;
   handleClick?: () => void;
 }) {
   return (
     <div
       className={classNames(
-        "flex items-center justify-center w-56 h-full rounded-md box-border cursor-pointer select-none border-2",
+        "flex items-center justify-center rounded-md box-border cursor-pointer select-none border-2",
         bg,
-        border
+        border,
+        width,
+        height,
+        margin
       )}
       onClick={handleClick}
     >
       {icon ? (
         <FontAwesomeIcon
           icon={icon}
-          className={classNames("w-4 h-4 mr-2", textColor)}
+          className={classNames("w-4 h-4", textColor)}
         />
       ) : (
         ""
       )}
 
-      <p className={classNames("h-9 content-center font-medium", textColor)}>
-        {name}
-      </p>
+      {name ? (
+        <p
+          className={classNames(
+            "ml-2 h-9 content-center font-medium",
+            textColor
+          )}
+        >
+          {name}
+        </p>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

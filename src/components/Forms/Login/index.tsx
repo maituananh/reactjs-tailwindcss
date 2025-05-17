@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Fragment, useState } from "react";
-import Button from "../../buttons/Button";
+import Button from "../../Button";
 import Register from "../Register";
 import Sigin from "../Sigin";
 

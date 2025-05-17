@@ -1,12 +1,16 @@
+import Button from "@/components/Button";
+import Modal from "@components/Modal";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
-import { faArrowTrendUp, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowTrendUp,
+  faSearch,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import routes from "../../configs/routes";
-import ButtonSearch from "../buttons/ButtonSearch";
-import Modal from "../modal";
 import "./index.css";
 
 function Search() {
@@ -30,7 +34,14 @@ function Search() {
             pathname: routes.search.replace(":searchValue", searchValue),
           }}
         >
-          <ButtonSearch />
+          <Button
+            width="w-16"
+            height="h-7"
+            margin="mr-1"
+            icon={faSearch}
+            textColor="text-slate-200"
+            bg="bg-red-201"
+          />
         </Link>
       </div>
 
