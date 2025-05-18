@@ -1,7 +1,5 @@
-import Button from "@/components/Button";
-import LoginForm from "@components/Forms/Login";
-import Modal from "@components/Modal";
-import Search from "@components/Search";
+import { Button, LoginForm, Modal, Search } from "@components/index";
+import routes from "@configs/routes";
 import { faBell, faUser } from "@fortawesome/free-regular-svg-icons";
 import {
   faBars,
@@ -12,7 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import routes from "../../../configs/routes";
 import "./index.css";
 
 function Header() {

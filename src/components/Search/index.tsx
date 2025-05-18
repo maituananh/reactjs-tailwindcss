@@ -1,5 +1,5 @@
-import Button from "@/components/Button";
-import Modal from "@components/Modal";
+import { Button, Modal } from "@components/index";
+import routes from "@configs/routes";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowTrendUp,
@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import routes from "../../configs/routes";
 import "./index.css";
 
 function Search() {
@@ -18,6 +17,10 @@ function Search() {
   const [searchSuggestionValue, setSearchSuggestion] = useState(false);
 
   window.addEventListener("scroll", () => setSearchSuggestion(false));
+
+  const handleOnClickSearch = (): string => {
+    return `${routes.search}/${searchValue}`;
+  };
 
   return (
     <div className="relative" onMouseLeave={() => setSearchSuggestion(false)}>
@@ -30,9 +33,7 @@ function Search() {
         />
         <Link
           onClick={() => setSearchSuggestion(false)}
-          to={{
-            pathname: routes.search.replace(":searchValue", searchValue),
-          }}
+          to={handleOnClickSearch()}
         >
           <Button
             width="w-16"

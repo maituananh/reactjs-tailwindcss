@@ -1,4 +1,4 @@
-import { Button, Spinner } from "@/components";
+import { Button, Spinner } from "@components/index";
 import {
   faArrowTrendUp,
   faBox,

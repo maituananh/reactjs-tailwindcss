@@ -1,9 +1,8 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Star } from "@components/index";
+import routes from "@configs/routes";
+import { cutStringByLength } from "@utils/index";
 import { Link } from "react-router-dom";
-import routes from "../../configs/routes";
 import { BookData } from "../../types/Book";
-import { cutStringByLength } from "../../utils/stringUtils";
 
 function Item({ book }: { book: BookData }) {
   return (
@@ -11,7 +10,7 @@ function Item({ book }: { book: BookData }) {
       className={`w-11/12 h-80 flex flex-col bg-white rounded-md mt-2 hover:border-gray-400 shadow hover:shadow-slate-700 transition-shadow`}
     >
       <Link
-        to={routes.productDetail.replace(":id", book.isbn13)}
+        to={`${routes.product}/${book.isbn13}`}
         className="flex justify-center items-center mt-2"
       >
         <img
@@ -31,14 +30,7 @@ function Item({ book }: { book: BookData }) {
             </p>
           </div>
           <del className="text-gray-400">120.000 đ</del>
-          <div className="text-xs">
-            <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-            <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-            <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-            <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-            <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-            <span className="text-gray-400 ml-2">| Đã bán 1.000</span>
-          </div>
+          <Star slot={5} />
         </div>
       </div>
     </div>
