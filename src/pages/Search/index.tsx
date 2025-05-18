@@ -1,9 +1,8 @@
-import { Spinner } from "@components/index";
+import { Item, Spinner } from "@components/index";
 import { searchItems } from "@services/searchService";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DropdownList from "../../components/dropdowns/Dropdown";
-import Item from "../../components/items/Item";
 import { BookData } from "../../types/Book";
 
 function SearchItem() {

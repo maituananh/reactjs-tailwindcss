@@ -1,4 +1,9 @@
-import { Button, Spinner } from "@components/index";
+import {
+  Button,
+  ItemDescription,
+  ShippingInformationView,
+  Spinner,
+} from "@components/index";
 import {
   faArrowTrendUp,
   faBox,
@@ -11,8 +16,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getItemById } from "@services/productDetailService";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ItemDescription from "../../components/items/ItemDescription";
-import ShipInforView from "../../components/views/ShipInforView";
 import { BookDetail } from "../../types/BookDetail";
 
 function ItemDetail() {
@@ -182,7 +185,7 @@ function ItemDetail() {
             </div>
 
             <div className="mt-4 pl-4 bg-white rounded-lg">
-              <ShipInforView />
+              <ShippingInformationView />
             </div>
 
             <div className="mt-4 pl-4 bg-white rounded-lg">

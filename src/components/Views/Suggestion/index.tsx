@@ -1,6 +1,6 @@
-import { BookData } from "../../types/Book";
-import NewBook from "../../types/NewBook";
-import Item from "../items/Item";
+import { Item } from "@components/index";
+import { BookData } from "../../../types/Book";
+import NewBook from "../../../types/NewBook";
 
 function SuggestionView({ newBooks }: { newBooks: NewBook }) {
   return (

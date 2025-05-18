@@ -1,11 +1,9 @@
-import { Banner, Menu } from "@components/index";
+import { Banner, CategoryItem, Item, Menu } from "@components/index";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getNewProducts, searchItems } from "@services/index";
 import { useEffect, useState } from "react";
-import CategoryItem from "../../components/items/CategoryItem";
-import Item from "../../components/items/Item";
-import SuggestionView from "../../components/views/SuggestionView";
+import SuggestionView from "../../components/Views/Suggestion";
 import { BookData } from "../../types/Book";
 import { MenuType } from "../../types/MenuType";
 import NewBook from "../../types/NewBook";
