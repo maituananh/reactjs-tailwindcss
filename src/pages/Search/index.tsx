@@ -1,4 +1,4 @@
-import { Item, Spinner } from "@components/index";
+import { Item, NavBar, Spinner } from "@components/index";
 import { searchItems } from "@services/searchService";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -27,26 +27,7 @@ function SearchItem() {
         <Spinner />
       ) : (
         <>
-          <div className="col-span-3 bg-white rounded-lg">
-            <div className="h-16 text-red-700 font-bold text-xl pl-4 pt-4 border-b-gray-300 border-b-2">
-              <p>LỌC THEO</p>
-            </div>
-            <div>
-              <div className="border-t-gray-500">
-                <p className="font-bold pl-4">DANH MỤC CHÍNH</p>
-                <ul className="pl-8 pt-2 text-sm space-y-2">
-                  <li className="flex space-x-2">
-                    <input type="checkbox" />
-                    <p>Sách Tiếng Việt</p>
-                  </li>
-                  <li className="flex space-x-2">
-                    <input type="checkbox" />
-                    <p>Sách Tiếng Việt</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <NavBar />
 
           <div className="col-span-9 bg-white rounded-lg pl-4">
             <div className="font-semibold mt-4">
@@ -77,7 +58,7 @@ function SearchItem() {
             </div>
             <div className="grid grid-cols-12 ml-1">
               {items?.map((i) => (
-                <div className="col-span-3">
+                <div key={i.isbn13} className="col-span-3">
                   <Item book={i} />
                 </div>
               ))}

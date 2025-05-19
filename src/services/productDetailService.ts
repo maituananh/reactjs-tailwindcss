@@ -1,4 +1,4 @@
-import { get } from "@/utils/httpRequest";
+import { get } from "@utils/httpRequest";
 import { BookDetail } from "../types/BookDetail";
 
 export const getItemById = async (

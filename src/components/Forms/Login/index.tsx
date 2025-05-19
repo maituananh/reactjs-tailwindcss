@@ -1,8 +1,8 @@
+import Register from "@components/Forms/Register";
+import Sigin from "@components/Forms/Sigin";
+import { Button } from "@components/index";
 import classNames from "classnames";
 import { Fragment, useState } from "react";
-import Button from "../../Button";
-import Register from "../Register";
-import Sigin from "../Sigin";
 
 function LoginForm({
   isShowIgnoreBtn = false,

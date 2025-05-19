@@ -1,4 +1,4 @@
-import config from "@/configs/env";
+import config from "@configs/env";
 import axios from "axios";
 
 export const request = axios.create({

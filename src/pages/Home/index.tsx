@@ -1,9 +1,14 @@
-import { Banner, CategoryItem, Item, Menu } from "@components/index";
+import {
+  Banner,
+  CategoryItem,
+  FlashSale,
+  Menu,
+  SuggestionView,
+} from "@components/index";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getNewProducts, searchItems } from "@services/index";
+import { getNewProducts, paginationProduct } from "@services/index";
 import { useEffect, useState } from "react";
-import SuggestionView from "../../components/Views/Suggestion";
 import { BookData } from "../../types/Book";
 import { MenuType } from "../../types/MenuType";
 import NewBook from "../../types/NewBook";
@@ -85,8 +90,10 @@ function Home() {
   const [newProducts, setnewProducts] = useState<NewBook>();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchData = async () => {
-      Promise.all([getNewProducts(), searchItems()]).then(
+      Promise.all([getNewProducts(), paginationProduct(10, 1)]).then(
         ([newItems, items]) => {
           setnewProducts(newItems);
           setProduct(items);
@@ -100,7 +107,7 @@ function Home() {
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-center">
-        {banners.map((b, index) => (
+        {banners.map((_, index) => (
           <Banner key={index}></Banner>
         ))}
       </div>
@@ -111,26 +118,7 @@ function Home() {
         ))}
       </div>
 
-      <div className="w-full h-full bg-flash-sale-image flex justify-center">
-        <div className="flex flex-col">
-          <div className="w-1230 h-16 bg-white rounded-md mt-5">
-            <a href="" className="h-full flex items-center justify-start ml-5">
-              <img
-                src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/flashsale/label-flashsale.svg?q="
-                className=""
-              />
-              <p className="ml-5">Kết thúc trong</p>
-            </a>
-          </div>
-          <div className="w-1230 mt-3 mb-5">
-            <div className="grid grid-cols-5">
-              {products?.map((product, index) => (
-                <Item key={index} book={product} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      <FlashSale books={products!} />
 
       <div className="w-1230 bg-white mt-5 rounded-md">
         <div className="flex h-16 border-b-2 items-center">
@@ -147,7 +135,7 @@ function Home() {
         </div>
       </div>
 
-      <SuggestionView newBooks={newProducts!} />
+      <SuggestionView books={newProducts?.books!} />
     </div>
   );
 }
