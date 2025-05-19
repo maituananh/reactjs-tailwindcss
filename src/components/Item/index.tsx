@@ -13,7 +13,7 @@ function Item({ book }: { book: BookData }) {
       ref={ref}
       className={`w-11/12 h-80 flex flex-col bg-white rounded-md mt-2 hover:border-gray-400 shadow hover:shadow-slate-700 transition-shadow`}
     >
-      {inView ? (
+      {inView && (
         <>
           <Link
             to={`${routes.product}/${book.isbn13}`}
@@ -42,8 +42,6 @@ function Item({ book }: { book: BookData }) {
             </div>
           </div>
         </>
-      ) : (
-        <></>
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import Register from "@components/Forms/Register";
 import Sigin from "@components/Forms/Sigin";
 import { Button } from "@components/index";
 import classNames from "classnames";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 function LoginForm({
   isShowIgnoreBtn = false,
@@ -42,15 +42,13 @@ function LoginForm({
             bg="bg-gray-300"
             name={isShowLoginForm ? "Đăng nhập" : "Đăng ký"}
           />
-          {isShowIgnoreBtn ? (
+          {isShowIgnoreBtn && (
             <Button
               handleClick={onClickIgnoreBtn}
               name="Bỏ qua"
               border="border-red-201"
               textColor="text-red-201"
             />
-          ) : (
-            <Fragment />
           )}
         </div>
       </div>

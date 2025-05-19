@@ -53,26 +53,22 @@ function PageButtons({ total }: { total: number }) {
             </a>
             {/* <!-- Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" --> */}
 
-            {Array.from({ length: 3 }).map((_, i) => (
-              <>
-                <a
-                  href="#"
-                  className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                >
-                  {i + 1}
-                </a>
-              </>
+            {Array.from({ length: total <= 6 ? total : 3 }).map((_, i) => (
+              <a
+                href="#"
+                className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+              >
+                {i + 1}
+              </a>
             ))}
 
-            {total > 3 ? (
+            {total > 6 && (
               <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
                 ...
               </span>
-            ) : (
-              <></>
             )}
 
-            {total > 3!! &&
+            {total > 6 &&
               Array.from({ length: total - 3 < 3 ? total - 3 : 3 }).map(
                 (_, i) => (
                   <a

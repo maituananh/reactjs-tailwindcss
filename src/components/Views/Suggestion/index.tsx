@@ -20,7 +20,7 @@ function SuggestionView({
       </div>
 
       {isShowPagable ? (
-        <PageButtons total={6} />
+        <PageButtons total={100} />
       ) : (
         <Link
           to={routes.suggestion}

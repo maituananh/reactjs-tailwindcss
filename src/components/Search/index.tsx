@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -102,10 +102,8 @@ function Search() {
           </div>
         </div>
       </div>
-      {searchSuggestionValue ? (
+      {searchSuggestionValue && (
         <Modal css="top-16" handleClick={() => setSearchSuggestion(false)} />
-      ) : (
-        <Fragment />
       )}
     </div>
   );

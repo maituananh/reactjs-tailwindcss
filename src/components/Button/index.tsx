@@ -35,16 +35,14 @@ function Button({
       )}
       onClick={handleClick}
     >
-      {icon ? (
+      {icon && (
         <FontAwesomeIcon
           icon={icon}
           className={classNames("w-4 h-4", textColor)}
         />
-      ) : (
-        ""
       )}
 
-      {name ? (
+      {name && (
         <p
           className={classNames(
             "ml-2 h-9 content-center font-medium",
@@ -53,8 +51,6 @@ function Button({
         >
           {name}
         </p>
-      ) : (
-        ""
       )}
     </div>
   );
