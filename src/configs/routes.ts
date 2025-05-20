@@ -6,6 +6,7 @@ const routes = {
   searchByValue: "/search/:value",
   login: "/login",
   suggestion: "/suggestion",
+  suggestionByPage: "/suggestion/:page",
 };
 
 export default routes;

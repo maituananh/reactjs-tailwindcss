@@ -1,25 +1,39 @@
-import { Item, NavBar, Spinner } from "@components/index";
+import { Item, NavBar, PageButtons, Spinner } from "@components/index";
 import { searchItems } from "@services/searchService";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import DropdownList from "../../components/dropdowns/Dropdown";
-import { BookData } from "../../types/Book";
+import NewBook from "../../types/NewBook";
 
 function SearchItem() {
-  const { value: searchValue } = useParams();
+  const { value } = useParams();
 
-  const [items, setItems] = useState<BookData[]>([]);
+  const storeSearchValue = useRef(value);
+
+  const [item, setItem] = useState<NewBook>();
   const [isLoader, setIsLoader] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
+    if (storeSearchValue.current !== value) {
+      setCurrentPage(1);
+    }
+
     const search = async () => {
-      const result = await searchItems(searchValue);
+      const result = await searchItems(value!, currentPage);
+      setItem(result);
+      storeSearchValue.current = value;
       setIsLoader(false);
-      setItems(result);
     };
 
     search();
-  }, [searchValue]);
+  }, [value, currentPage]);
+
+  const handleOnClickPage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className="grid grid-cols-12 w-1230 gap-4 mt-5">
@@ -33,7 +47,7 @@ function SearchItem() {
             <div className="font-semibold mt-4">
               <p className="font-bold">
                 KẾT QUẢ TÌM KIẾM:{" "}
-                <a className="text-blue-600" href="">
+                <a className="text-blue-600" href="#">
                   khoa học
                 </a>
               </p>
@@ -57,12 +71,14 @@ function SearchItem() {
               </div>
             </div>
             <div className="grid grid-cols-12 ml-1">
-              {items?.map((i) => (
+              {item?.books?.map((i) => (
                 <div key={i.isbn13} className="col-span-3">
                   <Item book={i} />
                 </div>
               ))}
             </div>
+
+            <PageButtons total={item?.total!} onClickPage={handleOnClickPage} />
           </div>
         </>
       )}

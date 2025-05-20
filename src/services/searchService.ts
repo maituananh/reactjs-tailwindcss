@@ -1,19 +1,20 @@
 import { get } from "@utils/httpRequest";
-import { BookData } from "../types/Book";
+import NewBook from "../types/NewBook";
 
 export const searchItems = async (
-  searchValue: string = ""
-): Promise<BookData[]> => {
-  if (searchValue) {
-    return [];
+  searchValue: string,
+  page: number = 1
+): Promise<NewBook> => {
+  if (!searchValue) {
+    return {} as NewBook;
   }
 
   try {
-    const response = await get(`/search/${searchValue}`);
-    return response.books as BookData[];
+    const response = await get(`/search/${searchValue}/${page}`);
+    return response as NewBook;
   } catch (e) {
     console.log(e);
   }
 
-  return [];
+  return {} as NewBook;
 };

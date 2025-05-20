@@ -1,15 +1,19 @@
+import routes from "@configs/routes";
 import {
   faEnvelope,
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <div className="w-1230 grid grid-cols-12 bg-white rounded-lg mt-5 pl-5 pt-6">
       <div className="col-span-4 space-y-4 border-r-2">
-        <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo.png" />
+        <Link to={routes.home}>
+          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo.png" />
+        </Link>
         <p className="text-sm">
           Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP HCMCông Ty Cổ Phần Phát Hành
           Sách TP HCM - FAHASA60 - 62 Lê Lợi, Quận 1, TP. HCM, Việt Nam

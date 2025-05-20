@@ -10,7 +10,8 @@
         "@utils": "./src/utils",
         "@layouts": "./src/layouts",
         "@routes": "./src/routes",
-        "@configs": "./src/configs"
+        "@configs": "./src/configs",
+        "@stores": "./src/stores"
       }
     }]
   ]

@@ -10,6 +10,7 @@ import Modal from "./Modal";
 import NavBar from "./NavBar";
 import PageButtons from "./PageButtons";
 import Search from "./Search";
+import SearchHistory from "./SearchHistory";
 import Spinner from "./Spinner";
 import Star from "./Star";
 import ShippingInformationView from "./Views/Shipping";
@@ -28,6 +29,7 @@ export {
   NavBar,
   PageButtons,
   Search,
+  SearchHistory,
   ShippingInformationView,
   Spinner,
   Star,

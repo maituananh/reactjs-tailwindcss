@@ -1,5 +1,15 @@
 const cutStringByLength = (str: string, length: number = 45) => {
-  return str.length > length ? `${str.substring(0, length)}...` : str;
+  const array = str.split(" ");
+  let finalString = "";
+  array.forEach((t) => {
+    if ((t + finalString).length > length) {
+      return finalString;
+    }
+    finalString += ` ${t}`;
+  });
+  return finalString.length > length
+    ? `${finalString}...`.trim()
+    : finalString.trim();
 };
 
 export default cutStringByLength;

@@ -7,11 +7,7 @@ import {
 } from "@components/index";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getNewProducts, paginationProduct } from "@services/index";
-import { useEffect, useState } from "react";
-import { BookData } from "../../types/Book";
 import { MenuType } from "../../types/MenuType";
-import NewBook from "../../types/NewBook";
 
 function Home() {
   const banners = [
@@ -86,24 +82,6 @@ function Home() {
     },
   ];
 
-  const [products, setProduct] = useState<BookData[]>();
-  const [newProducts, setnewProducts] = useState<NewBook>();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const fetchData = async () => {
-      Promise.all([getNewProducts(), paginationProduct(10, 1)]).then(
-        ([newItems, items]) => {
-          setnewProducts(newItems);
-          setProduct(items);
-        }
-      );
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-center">
@@ -118,7 +96,7 @@ function Home() {
         ))}
       </div>
 
-      <FlashSale books={products!} />
+      <FlashSale />
 
       <div className="w-1230 bg-white mt-5 rounded-md">
         <div className="flex h-16 border-b-2 items-center">
@@ -135,7 +113,7 @@ function Home() {
         </div>
       </div>
 
-      <SuggestionView books={newProducts?.books!} />
+      <SuggestionView isShowPagable={false} />
     </div>
   );
 }

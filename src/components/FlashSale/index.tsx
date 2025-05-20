@@ -1,7 +1,22 @@
 import { Item } from "@components/index";
+import { useEffect, useState } from "react";
+import { getNewProducts } from "../../services";
 import { BookData } from "../../types/Book";
 
-function FlashSale({ books }: { books: BookData[] }) {
+function FlashSale() {
+  const [products, setProduct] = useState<BookData[]>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const fetchData = async () => {
+      const newProducts = await getNewProducts();
+      setProduct(newProducts.books);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="w-full h-full bg-flash-sale-image flex justify-center">
       <div className="flex flex-col">
@@ -16,7 +31,7 @@ function FlashSale({ books }: { books: BookData[] }) {
         </div>
         <div className="w-1230 mt-3 mb-5">
           <div className="grid grid-cols-5">
-            {books?.map((book, index) => (
+            {products?.map((book, index) => (
               <Item key={index} book={book} />
             ))}
           </div>

@@ -7,7 +7,7 @@ const publicRoutes = [
   { path: routes.productDetail, component: ItemDetail, layout: null },
   { path: routes.searchByValue, component: SearchItem, layout: null },
   { path: routes.login, component: Login, layout: null },
-  { path: routes.suggestion, component: Suggestion, layout: null },
+  { path: routes.suggestionByPage, component: Suggestion, layout: null },
 ];
 
 const privateRountes = [];

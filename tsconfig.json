@@ -25,6 +25,7 @@
       "@layouts/*": ["./layouts/*"],
       "@routes/*": ["./routes/*"],
       "@configs/*": ["./configs/*"],
+      "@stores/*": ["./stores/*"],
     }
   },
   "include": ["src", "./src/**/*.ts", "additional.d.ts", "src/layouts/index.ts"],

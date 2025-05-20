@@ -1,4 +1,10 @@
-function PageButtons({ total }: { total: number }) {
+function PageButtons({
+  total,
+  onClickPage,
+}: {
+  total: number;
+  onClickPage: (pageNumber: number) => void;
+}) {
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
@@ -23,7 +29,7 @@ function PageButtons({ total }: { total: number }) {
             to
             <span className="font-medium">10</span>
             of
-            <span className="font-medium">{total}</span>
+            <span className="font-medium">{total / 10}</span>
             results
           </p>
         </div>
@@ -55,6 +61,7 @@ function PageButtons({ total }: { total: number }) {
 
             {Array.from({ length: total <= 6 ? total : 3 }).map((_, i) => (
               <a
+                onClick={() => onClickPage(i + 1)}
                 href="#"
                 className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
               >
@@ -72,6 +79,7 @@ function PageButtons({ total }: { total: number }) {
               Array.from({ length: total - 3 < 3 ? total - 3 : 3 }).map(
                 (_, i) => (
                   <a
+                    onClick={() => onClickPage(total - 2 + i)}
                     href="#"
                     className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                   >

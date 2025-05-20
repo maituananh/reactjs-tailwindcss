@@ -1,26 +1,41 @@
-import { Button, Modal } from "@components/index";
+import { Button, Modal, SearchHistory } from "@components/index";
 import routes from "@configs/routes";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
-import {
-  faArrowTrendUp,
-  faSearch,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowTrendUp, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDebounce } from "@hooks/index";
+import { searchItems } from "@services/index";
+import { storeSearchHistory } from "@stores/index";
+import { cutStringByLength } from "@utils/index";
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BookData } from "../../types/Book";
 import "./index.css";
 
 function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [searchSuggestionValue, setSearchSuggestion] = useState(false);
+  const [items, setItems] = useState<BookData[]>([]);
+
+  const searchDebounce = useDebounce(searchValue, 1000);
 
   window.addEventListener("scroll", () => setSearchSuggestion(false));
 
-  const handleOnClickSearch = (): string => {
-    return `${routes.search}/${searchValue}`;
-  };
+  useEffect(() => {
+    if (!searchDebounce) {
+      return;
+    }
+
+    setSearchSuggestion(true);
+
+    const searchResults = async () => {
+      const item = await searchItems(searchDebounce);
+      setItems(item.books);
+    };
+
+    searchResults();
+    storeSearchHistory(searchDebounce);
+  }, [searchDebounce]);
 
   return (
     <div className="relative" onMouseLeave={() => setSearchSuggestion(false)}>
@@ -33,7 +48,7 @@ function Search() {
         />
         <Link
           onClick={() => setSearchSuggestion(false)}
-          to={handleOnClickSearch()}
+          to={`${routes.search}/${searchValue}`}
         >
           <Button
             width="w-16"
@@ -46,64 +61,44 @@ function Search() {
         </Link>
       </div>
 
-      <div
-        className={classNames(
-          "header__search-suggestion absolute top-[50px] before:content-[''] before:block bg-white w-full rounded-md",
-          searchSuggestionValue ? "block z-[1]" : "hidden"
-        )}
-      >
-        <div className="p-5">
-          <p className="text-white bg-red-212 h-10 rounded-md content-center text-lg pl-3">
-            Quà Tặng Ngập Tràn - Rộn Ràng Đón Lễ
-          </p>
-          <div className="flex justify-between mt-3">
-            <div className="flex items-center">
-              <FontAwesomeIcon icon={faClock} />
-              <p className="ml-2 font-semibold text-lg">Lịch sử tìm kiếm</p>
+      {searchSuggestionValue && (
+        <Modal
+          css="top-16"
+          handleClick={() => setSearchSuggestion(false)}
+        ></Modal>
+      )}
+
+      {searchSuggestionValue && (
+        <div
+          className={classNames(
+            "header__search-suggestion absolute top-[50px] before:content-[''] before:block bg-white w-full rounded-md z-[1]"
+          )}
+        >
+          <div className="p-5">
+            <p className="text-white bg-red-212 h-10 rounded-md content-center text-lg pl-3">
+              Quà Tặng Ngập Tràn - Rộn Ràng Đón Lễ
+            </p>
+
+            <SearchHistory />
+
+            <div className="flex items-center mt-3 pt-2 border-t-2">
+              <FontAwesomeIcon icon={faArrowTrendUp} />
+              <p className="ml-2 font-semibold text-lg">Từ khoá hot</p>
             </div>
-            <p className="text-red-201 cursor-pointer">Xoá tất cả</p>
-          </div>
-          <ul className="flex space-x-2 items-center mt-3">
-            <li className="bg-slate-200 rounded-md p-1 content-center">
-              khoa hoc
-              <FontAwesomeIcon icon={faXmark} className="ml-2 cursor-pointer" />
-            </li>
-            <li className="bg-slate-200 rounded-md p-1 content-center">
-              vat ly
-              <FontAwesomeIcon icon={faXmark} className="ml-2 cursor-pointer" />
-            </li>
-          </ul>
-          <div className="flex items-center mt-3 pt-2 border-t-2">
-            <FontAwesomeIcon icon={faArrowTrendUp} />
-            <p className="ml-2 font-semibold text-lg">Từ khoá hot</p>
-          </div>
-          <div className="grid grid-cols-12 mt-3">
-            <Link className="col-span-4 flex" to="">
-              <img
-                className="h-16"
-                src="https://cdn1.fahasa.com/media/catalog/product/t/h/th_-h_-lo-_u.jpg"
-              />
-              <p>Các tác phẩm kinh điển</p>
-            </Link>
-            <Link className="col-span-4 flex" to="">
-              <img
-                className="h-16"
-                src="https://cdn1.fahasa.com/media/catalog/product/t/h/th_-h_-lo-_u.jpg"
-              />
-              <p>Các tác phẩm kinh điển</p>
-            </Link>
-            <Link className="col-span-4 flex" to="">
-              <img
-                className="h-16"
-                src="https://cdn1.fahasa.com/media/catalog/product/t/h/th_-h_-lo-_u.jpg"
-              />
-              <p>Các tác phẩm kinh điển</p>
-            </Link>
+            <div className="grid grid-cols-12 mt-3">
+              {items?.map((item) => (
+                <Link
+                  className="col-span-4 flex hover:shadow-gray-500 hover:shadow-md"
+                  onClick={() => setSearchSuggestion(false)}
+                  to={`${routes.product}/${item.isbn13}`}
+                >
+                  <img className="h-16" src={item.image} />
+                  <p className="text-sm">{cutStringByLength(item.title)}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      {searchSuggestionValue && (
-        <Modal css="top-16" handleClick={() => setSearchSuggestion(false)} />
       )}
     </div>
   );
