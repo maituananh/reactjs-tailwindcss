@@ -1,25 +1,33 @@
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getSearchHistory, removeSearchHistoryKeywork } from "@stores/index";
+import {
+  clearSearchHistory,
+  getSearchHistory,
+  removeSearchHistoryKeywork,
+  storeSearchHistory,
+} from "@stores/index";
 import { useEffect, useState } from "react";
 
-function SearchHistory() {
-  const [removeHistoryValue, setRemoveHistoryValue] = useState("");
-  const [isClearHistory, setIsClearHistory] = useState(false);
+function SearchHistory({ newKeyword }: { newKeyword: string }) {
+  const [histories, setHistories] = useState<string[]>(getSearchHistory());
 
-  console.log(removeHistoryValue);
+  const handleRemoveHistory = (history: string) => {
+    removeSearchHistoryKeywork(history);
+    setHistories(getSearchHistory());
+  };
+
+  const handleClearHistory = () => {
+    clearSearchHistory();
+    setHistories([]);
+  };
 
   useEffect(() => {
-    console.log("render");
-
-    removeSearchHistoryKeywork(removeHistoryValue);
-  });
-
-  //   const handleClearHistory = () => {
-  //     clearSearchHistory();
-  //     setIsClearHistory(true);
-  //   };
+    if (newKeyword) {
+      storeSearchHistory(newKeyword);
+    }
+    setHistories(getSearchHistory());
+  }, [newKeyword]);
 
   return (
     <>
@@ -28,19 +36,19 @@ function SearchHistory() {
           <FontAwesomeIcon icon={faClock} />
           <p className="ml-2 font-semibold text-lg">Lịch sử tìm kiếm</p>
         </div>
-        {/* <p onClick={handleClearHistory} className="text-red-201 cursor-pointer">
+        <p onClick={handleClearHistory} className="text-red-201 cursor-pointer">
           Xoá tất cả
-        </p> */}
+        </p>
       </div>
       <ul className="flex space-x-2 items-center mt-3">
-        {getSearchHistory().map((history: string) => (
+        {histories.map((history: string) => (
           <li
             key={history}
             className="bg-slate-200 rounded-md p-1 content-center"
           >
             {history}
             <FontAwesomeIcon
-              onClick={() => setRemoveHistoryValue(history)}
+              onClick={() => handleRemoveHistory(history)}
               icon={faXmark}
               className="ml-2 cursor-pointer"
             />

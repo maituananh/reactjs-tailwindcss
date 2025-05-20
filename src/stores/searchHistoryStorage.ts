@@ -5,7 +5,7 @@ export const storeSearchHistory = (history: string) => {
   if (searchHistory) {
     localStorage.setItem(SEARCH_HISTORY, `${searchHistory},${history}`);
   } else {
-    localStorage.setItem(SEARCH_HISTORY, `${history}`);
+    localStorage.setItem(SEARCH_HISTORY, history);
   }
 };
 

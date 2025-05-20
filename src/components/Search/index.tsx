@@ -4,7 +4,6 @@ import { faArrowTrendUp, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDebounce } from "@hooks/index";
 import { searchItems } from "@services/index";
-import { storeSearchHistory } from "@stores/index";
 import { cutStringByLength } from "@utils/index";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
@@ -34,7 +33,6 @@ function Search() {
     };
 
     searchResults();
-    storeSearchHistory(searchDebounce);
   }, [searchDebounce]);
 
   return (
@@ -79,7 +77,7 @@ function Search() {
               Quà Tặng Ngập Tràn - Rộn Ràng Đón Lễ
             </p>
 
-            <SearchHistory />
+            <SearchHistory newKeyword={searchDebounce} />
 
             <div className="flex items-center mt-3 pt-2 border-t-2">
               <FontAwesomeIcon icon={faArrowTrendUp} />
