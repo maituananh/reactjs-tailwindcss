@@ -21,7 +21,7 @@ function Search() {
   window.addEventListener("scroll", () => setSearchSuggestion(false));
 
   useEffect(() => {
-    if (!searchDebounce) {
+    if (!searchDebounce?.trim()) {
       return;
     }
 
@@ -77,7 +77,12 @@ function Search() {
               Quà Tặng Ngập Tràn - Rộn Ràng Đón Lễ
             </p>
 
-            <SearchHistory newKeyword={searchDebounce} />
+            <SearchHistory
+              newKeyword={searchDebounce}
+              onClickKeyword={(keywordSelected: string) =>
+                setSearchValue(keywordSelected)
+              }
+            />
 
             <div className="flex items-center mt-3 pt-2 border-t-2">
               <FontAwesomeIcon icon={faArrowTrendUp} />

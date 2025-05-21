@@ -9,7 +9,13 @@ import {
 } from "@stores/index";
 import { useEffect, useState } from "react";
 
-function SearchHistory({ newKeyword }: { newKeyword: string }) {
+function SearchHistory({
+  newKeyword,
+  onClickKeyword,
+}: {
+  newKeyword: string;
+  onClickKeyword: (keyword: string) => void;
+}) {
   const [histories, setHistories] = useState<string[]>(getSearchHistory());
 
   const handleRemoveHistory = (history: string) => {
@@ -40,11 +46,12 @@ function SearchHistory({ newKeyword }: { newKeyword: string }) {
           Xoá tất cả
         </p>
       </div>
-      <ul className="flex space-x-2 items-center mt-3">
+      <ul className="flex flex-wrap items-center mt-3 select-none">
         {histories.map((history: string) => (
           <li
+            onClick={() => onClickKeyword(history)}
             key={history}
-            className="bg-slate-200 rounded-md p-1 content-center"
+            className="bg-slate-200 rounded-md p-1 content-center mt-2 mr-2 cursor-pointer"
           >
             {history}
             <FontAwesomeIcon

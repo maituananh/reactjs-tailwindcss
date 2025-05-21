@@ -8,7 +8,6 @@ import Item from "./Item";
 import Menu from "./Menu";
 import Modal from "./Modal";
 import NavBar from "./NavBar";
-import PageButtons from "./PageButtons";
 import Search from "./Search";
 import SearchHistory from "./SearchHistory";
 import Spinner from "./Spinner";
@@ -27,7 +26,6 @@ export {
   Menu,
   Modal,
   NavBar,
-  PageButtons,
   Search,
   SearchHistory,
   ShippingInformationView,

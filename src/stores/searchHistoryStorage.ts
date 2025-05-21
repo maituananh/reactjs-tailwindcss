@@ -1,11 +1,22 @@
 const SEARCH_HISTORY = "searchHistory";
 
 export const storeSearchHistory = (history: string) => {
+  if (!history) {
+    return;
+  }
+
+  const keywordExisted = getSearchHistory().find((k) => k === history.trim());
+
+  if (keywordExisted) {
+    return;
+  }
+
   const searchHistory = localStorage.getItem(SEARCH_HISTORY);
+
   if (searchHistory) {
-    localStorage.setItem(SEARCH_HISTORY, `${searchHistory},${history}`);
+    localStorage.setItem(SEARCH_HISTORY, `${searchHistory},${history.trim()}`);
   } else {
-    localStorage.setItem(SEARCH_HISTORY, history);
+    localStorage.setItem(SEARCH_HISTORY, history.trim());
   }
 };
 
@@ -19,11 +30,11 @@ export const clearSearchHistory = () => {
 };
 
 export const removeSearchHistoryKeywork = (history: string) => {
-  if (!history) {
+  if (!history.trim()) {
     return;
   }
   const keyworks = getSearchHistory()
-    .filter((h) => h !== history)
+    .filter((h) => h !== history.trim())
     .join(",");
   localStorage.setItem(SEARCH_HISTORY, keyworks);
 };
