@@ -10,7 +10,9 @@ export const searchItems = async (
   }
 
   try {
-    const response = await get(`/search/${searchValue}/${page}`);
+    const response = await get(
+      `/search/${encodeURIComponent(searchValue)}/${page}`
+    );
     return response as NewBook;
   } catch (e) {
     console.log(e);

@@ -25,7 +25,10 @@ function ItemDetail() {
   const [item, setItem] = useState<BookDetail>();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
     const getItem = async () => {
       const item = await getItemById(id);
@@ -168,8 +171,8 @@ function ItemDetail() {
                     Tác giả: <span className="font-bold">{item?.authors}</span>
                   </p>
                   <p>
-                    Hình thức bìa:{" "}
-                    <span className="font-bold">Huy Hoang BookStore</span>
+                    Hình thức bìa:
+                    {<span className="font-bold">Huy Hoang BookStore</span>}
                   </p>
                 </div>
               </div>

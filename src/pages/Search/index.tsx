@@ -17,7 +17,10 @@ function SearchItem() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
     const search = async (page: number = currentPage) => {
       storeSearchValue.current = value;
