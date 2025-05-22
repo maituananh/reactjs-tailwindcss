@@ -12,7 +12,10 @@ function Footer() {
     <div className="w-1230 grid grid-cols-12 bg-white rounded-lg mt-5 pl-5 pt-6">
       <div className="col-span-4 space-y-4 border-r-2">
         <Link to={routes.home}>
-          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo.png" />
+          <img
+            alt="img"
+            src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo.png"
+          />
         </Link>
         <p className="text-sm">
           Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP HCMCông Ty Cổ Phần Phát Hành
@@ -24,23 +27,44 @@ function Footer() {
           Fahasa trên toàn quốc.
         </p>
         <img
+          alt="img"
           className="w-28 h-8"
           src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/logo-bo-cong-thuong-da-thong-bao1.png"
         />
         <div className="flex space-x-1">
-          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/footer/Facebook-on.png" />
-          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/Insta-on.png" />
-          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/Youtube-on.png" />
-          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/tumblr-on.png" />
-          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/twitter-on.png" />
-          <img src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/pinterest-on.png" />
+          <img
+            alt="img"
+            src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images/footer/Facebook-on.png"
+          />
+          <img
+            alt="img"
+            src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/Insta-on.png"
+          />
+          <img
+            alt="img"
+            src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/Youtube-on.png"
+          />
+          <img
+            alt="img"
+            src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/tumblr-on.png"
+          />
+          <img
+            alt="img"
+            src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/twitter-on.png"
+          />
+          <img
+            alt="img"
+            src="https://cdn1.fahasa.com/skin/frontend/ma_vanese/fahasa/images//footer/pinterest-on.png"
+          />
         </div>
         <div className="flex">
           <img
+            alt="img"
             className="w-28"
             src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/android1.png"
           />
           <img
+            alt="img"
             className="w-28 ml-5"
             src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/appstore1.png"
           />

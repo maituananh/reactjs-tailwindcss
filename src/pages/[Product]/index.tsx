@@ -4,6 +4,7 @@ import {
   ShippingInformationView,
   Spinner,
 } from "@components/index";
+import routes from "@configs/routes";
 import {
   faArrowTrendUp,
   faBox,
@@ -15,7 +16,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getItemById } from "@services/productDetailService";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BookDetail } from "../../types/BookDetail";
 
 function ItemDetail() {
@@ -55,12 +56,13 @@ function ItemDetail() {
         <div className="grid grid-cols-12 gap-5">
           <div className="col-span-5 bg-white w-full h-full rounded-lg">
             <div className="flex justify-center">
-              <img className="w-11/12 h-full" src={item?.image} />
+              <img alt="img" className="w-11/12 h-full" src={item?.image} />
             </div>
             <div className="flex justify-center mt-4">
               {[1, 2, 3, 4, 5].map((_, index) => (
                 <div key={index} className="ml-2">
                   <img
+                    alt="img"
                     className="w-20 h-20 bg-no-repeat bg-center bg-contain"
                     src={item?.image}
                   />
@@ -157,9 +159,9 @@ function ItemDetail() {
                 <div className="">
                   <p>
                     Nhà cung cấp:{" "}
-                    <a href="" className="font-bold">
+                    <Link to={routes.home} className="font-bold">
                       Huy Hoang BookStore
-                    </a>
+                    </Link>
                   </p>
                   <p>
                     Nhà xuất bản:{" "}
