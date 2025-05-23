@@ -2,6 +2,7 @@ import Banner from "./Banner";
 import Button from "./Button";
 import CategoryItem from "./Category";
 import ItemDescription from "./Description";
+import DropdownList from "./Dropdown";
 import FlashSale from "./FlashSale";
 import LoginForm from "./Forms/Login";
 import Item from "./Item";
@@ -19,6 +20,7 @@ export {
   Banner,
   Button,
   CategoryItem,
+  DropdownList,
   FlashSale,
   Item,
   ItemDescription,

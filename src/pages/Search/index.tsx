@@ -1,10 +1,9 @@
-import { Item, NavBar, Spinner } from "@components/index";
+import { DropdownList, Item, NavBar, Spinner } from "@components/index";
 import routes from "@configs/routes";
 import { searchItems } from "@services/searchService";
 import { useEffect, useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Link, useParams } from "react-router-dom";
-import DropdownList from "../../components/dropdowns/Dropdown";
 import NewBook from "../../types/NewBook";
 
 function SearchItem() {
@@ -73,9 +72,12 @@ function SearchItem() {
                 </li>
               </ul>
             </div>
-            <div className="border-b-gray-300 border-b-2">
+            <div className="flex justify-end items-center pb-4 space-x-4 border-b-gray-300 border-b-2">
               <div>
                 <p>Sắp xếp theo</p>
+              </div>
+              <div>
+                <DropdownList />
               </div>
               <div>
                 <DropdownList />
