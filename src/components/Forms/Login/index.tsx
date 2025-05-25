@@ -1,6 +1,5 @@
 import Register from "@components/Forms/Register";
 import Sigin from "@components/Forms/Sigin";
-import { Button } from "@components/index";
 import classNames from "classnames";
 import { useState } from "react";
 
@@ -37,7 +36,7 @@ function LoginForm({
 
         {isShowLoginForm ? <Sigin /> : <Register />}
 
-        <div className="flex flex-col items-center space-y-3 mb-5 mt-5">
+        {/* <div className="flex flex-col items-center space-y-3 mb-5 mt-5">
           <Button
             bg="bg-gray-300"
             name={isShowLoginForm ? "Đăng nhập" : "Đăng ký"}
@@ -50,7 +49,7 @@ function LoginForm({
               textColor="text-red-201"
             />
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

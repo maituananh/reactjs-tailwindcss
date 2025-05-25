@@ -2,8 +2,11 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
+type ButtonTypes = "button" | "submit" | "reset";
+
 function Button({
   name,
+  type = "button",
   bg,
   textColor,
   border,
@@ -14,6 +17,7 @@ function Button({
   handleClick,
 }: {
   name?: string;
+  type?: ButtonTypes;
   bg?: string;
   textColor?: string;
   border?: string;
@@ -33,25 +37,23 @@ function Button({
         height,
         margin
       )}
-      onClick={handleClick}
     >
-      {icon && (
-        <FontAwesomeIcon
-          icon={icon}
-          className={classNames("w-4 h-4", textColor)}
-        />
-      )}
-
-      {name && (
-        <p
-          className={classNames(
-            "ml-2 h-9 content-center font-medium",
-            textColor
-          )}
-        >
-          {name}
-        </p>
-      )}
+      <button
+        onClick={handleClick}
+        type={type}
+        className={classNames(
+          "h-9 w-full content-center font-medium",
+          textColor
+        )}
+      >
+        {icon && (
+          <FontAwesomeIcon
+            icon={icon}
+            className={classNames("w-4 h-4", name && "mr-2")}
+          />
+        )}
+        <span>{name}</span>
+      </button>
     </div>
   );
 }
