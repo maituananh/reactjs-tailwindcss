@@ -24,13 +24,14 @@ const useSearch = (
 
     if (prevKeyword.current !== keyword) {
       search(1);
-      currentPageRef.current = 1;
+      setCurrentPage(1);
     } else {
       search(currentPage);
+      // currentPageRef.current = currentPage;
     }
   }, [keyword, currentPage]);
 
-  return [item ?? null, currentPageRef.current - 1, updateCurrentPage];
+  return [item ?? null, currentPage - 1, updateCurrentPage];
 };
 
 export default useSearch;
