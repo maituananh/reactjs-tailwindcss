@@ -1,8 +1,8 @@
 import { DropdownList, Item, NavBar, Spinner } from "@components/index";
 import routes from "@configs/routes";
+import useSearch from "@hooks/useSearch";
 import ReactPaginate from "react-paginate";
 import { Link, useParams } from "react-router-dom";
-import useSearch from "../../hooks/useSearch";
 
 function SearchItem() {
   const { value } = useParams();
@@ -12,10 +12,10 @@ function SearchItem() {
     behavior: "smooth",
   });
 
-  const [item, currentPage, setPage] = useSearch(value!);
+  const [item, currentPage, updateCurrentPage] = useSearch(value!);
 
   const handleClickPage = (pageNumber: number) => {
-    setPage(pageNumber);
+    updateCurrentPage(pageNumber);
   };
 
   return (
@@ -61,7 +61,6 @@ function SearchItem() {
                 </div>
               ))}
             </div>
-            {currentPage}
             <ReactPaginate
               onPageChange={(page) => handleClickPage(page.selected)}
               pageRangeDisplayed={3}
@@ -80,7 +79,7 @@ function SearchItem() {
               activeClassName="active bg-blue-300"
               pageClassName="border-2 w-auto pl-2 pr-2 h-7 content-center flex justify-center items-center"
               pageLinkClassName="page-link"
-              // forcePage={currentPage - 1}
+              forcePage={currentPage}
               renderOnZeroPageCount={null}
             />
           </div>

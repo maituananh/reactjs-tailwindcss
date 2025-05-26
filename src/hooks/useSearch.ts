@@ -6,11 +6,12 @@ const useSearch = (
   keyword: string
 ): [NewBook | null, number, (page: number) => void] => {
   const prevKeyword = useRef(keyword);
+  const currentPageRef = useRef(1);
 
   const [item, setItem] = useState<NewBook>();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const setPage = (page: number) => {
+  const updateCurrentPage = (page: number) => {
     setCurrentPage(page + 1);
   };
 
@@ -22,12 +23,14 @@ const useSearch = (
     };
 
     if (prevKeyword.current !== keyword) {
-      console.log(prevKeyword.current);
-      // setCurrentPage(1);
+      search(1);
+      currentPageRef.current = 1;
+    } else {
+      search(currentPage);
     }
-    search(currentPage);
   }, [keyword, currentPage]);
-  return [item ?? null, currentPage, setPage];
+
+  return [item ?? null, currentPageRef.current - 1, updateCurrentPage];
 };
 
 export default useSearch;
