@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -72,18 +72,17 @@ function Header() {
           </div>
         </div>
       </div>
-
-      {isShowPopupLogin ? (
+      {isShowPopupLogin && (
         <Modal css={"top-0 flex items-start justify-center"}>
           <LoginForm
-            isShowIgnoreBtn
             css="w-[450px] mt-[72px]"
             isModeLogin={isModeLogin}
-            onClickIgnoreBtn={() => setIsShowPopupLogin(false)}
+            handleClickIgnore={() => {
+              setIsShowPopupLogin(false);
+              setIsModeLogin(false);
+            }}
           />
         </Modal>
-      ) : (
-        <Fragment />
       )}
     </div>
   );

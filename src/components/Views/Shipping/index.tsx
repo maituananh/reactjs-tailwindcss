@@ -1,6 +1,6 @@
 import { faCar, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SellCard from "../../card/SellCard";
+import SellCard from "../../Cards/SellCard";
 
 function ShippingInformationView() {
   return (

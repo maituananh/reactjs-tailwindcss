@@ -3,7 +3,6 @@ import routes from "@configs/routes";
 import { faArrowTrendUp, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDebounce } from "@hooks/index";
-import { searchItems } from "@services/index";
 import { cutStringByLength } from "@utils/index";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
@@ -27,12 +26,12 @@ function Search() {
 
     setSearchSuggestion(true);
 
-    const searchResults = async () => {
-      const item = await searchItems(searchDebounce);
-      setItems(item.books);
-    };
+    // const searchResults = async () => {
+    //   const item = await searchItems(searchDebounce);
+    //   setItems(item.books);
+    // };
 
-    searchResults();
+    // searchResults();
   }, [searchDebounce]);
 
   return (

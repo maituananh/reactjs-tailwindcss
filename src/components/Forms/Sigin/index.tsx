@@ -8,19 +8,18 @@ type Inputs = {
   password: string;
 };
 
-function Sigin() {
+function Sigin({ handleClickIgnore }: { handleClickIgnore?: () => void }) {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => console.log(data);
 
   return (
-    <div className="pl-8 pr-8 space-y-6">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="pl-8 pr-8 pb-8">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <div className="space-y-2">
           <label>Số điện thoại/Email</label>
           <input
@@ -30,18 +29,20 @@ function Sigin() {
               errors.email ? "border-red-201" : "border-gray-300"
             )}
             placeholder="Nhập số điện thoại hoặc email"
-            type="text"
+            type="email"
           />
         </div>
         <div className="space-y-2">
           <label>Mật khẩu</label>
-          <div className="flex items-center h-10 w-full rounded-s-sm border-2">
+          <div
+            className={classNames(
+              "flex items-center h-10 w-full rounded-s-sm border-2",
+              errors.password ? "border-red-201" : "border-gray-300"
+            )}
+          >
             <input
               {...register("password", { required: true })}
-              className={classNames(
-                "pl-4 w-full outline-none",
-                errors.password ? "border-red-201" : "border-gray-300"
-              )}
+              className={classNames("pl-4 w-full outline-none")}
               placeholder="Nhập mật khẩu"
               type={isShowPassword ? "text" : "password"}
             />
@@ -55,18 +56,15 @@ function Sigin() {
           </div>
         </div>
         <div className="flex flex-col items-center space-y-3 mb-5 mt-5">
-          <Button
-            // handleClick={handleClickLogin}
-            type="submit"
-            bg="bg-gray-300"
-            name="Đăng nhập"
-          />
-          <Button
-            // handleClick={() => {}}
-            name="Bỏ qua"
-            border="border-red-201"
-            textColor="text-red-201"
-          />
+          <Button type="submit" bg="bg-gray-300" name="Đăng nhập" />
+          {handleClickIgnore!! && (
+            <Button
+              handleClick={handleClickIgnore}
+              name="Bỏ qua"
+              border="border-red-201"
+              textColor="text-red-201"
+            />
+          )}
         </div>
       </form>
     </div>

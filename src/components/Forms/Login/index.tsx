@@ -1,18 +1,15 @@
-import Register from "@components/Forms/Register";
-import Sigin from "@components/Forms/Sigin";
+import { Register, Sigin } from "@components/Forms/index";
 import classNames from "classnames";
 import { useState } from "react";
 
 function LoginForm({
-  isShowIgnoreBtn = false,
-  onClickIgnoreBtn,
+  handleClickIgnore,
   css = "w-1230 mt-5",
   isModeLogin = true,
 }: {
-  isShowIgnoreBtn?: boolean;
+  handleClickIgnore?: () => void;
   css?: string;
   isModeLogin?: boolean;
-  onClickIgnoreBtn?: () => void;
 }) {
   const [isShowLoginForm, setIsShowLoginForm] = useState<boolean>(isModeLogin);
 
@@ -22,7 +19,7 @@ function LoginForm({
         <div className="flex items-center justify-around h-[72px] space-x-7 mr-7 ml-7">
           <div
             onClick={() => setIsShowLoginForm(true)}
-            className="hover:border-b-2 border-b-red-201 h-8 w-1/2 flex justify-center cursor-pointer"
+            className="h-8 w-1/2 flex justify-center cursor-pointer hover:border-b-2 border-b-red-201"
           >
             <p>Đăng nhập</p>
           </div>
@@ -34,22 +31,11 @@ function LoginForm({
           </div>
         </div>
 
-        {isShowLoginForm ? <Sigin /> : <Register />}
-
-        {/* <div className="flex flex-col items-center space-y-3 mb-5 mt-5">
-          <Button
-            bg="bg-gray-300"
-            name={isShowLoginForm ? "Đăng nhập" : "Đăng ký"}
-          />
-          {isShowIgnoreBtn && (
-            <Button
-              handleClick={onClickIgnoreBtn}
-              name="Bỏ qua"
-              border="border-red-201"
-              textColor="text-red-201"
-            />
-          )}
-        </div> */}
+        {isShowLoginForm ? (
+          <Sigin handleClickIgnore={handleClickIgnore} />
+        ) : (
+          <Register />
+        )}
       </div>
     </div>
   );
