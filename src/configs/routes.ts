@@ -5,8 +5,10 @@ const routes = {
   search: "/search",
   searchByValue: "/search/:value",
   login: "/login",
+  logout: "/logout",
   suggestion: "/suggestion",
   suggestionByPage: "/suggestion/:page",
+  notFound: "/*",
 };
 
 export default routes;

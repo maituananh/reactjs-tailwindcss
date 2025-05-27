@@ -1,28 +1,58 @@
+import PrivateRoute from "@components/Auth/Private";
+import keycloak from "@configs/keycloak";
+import { DefaultLayout } from "@layouts/index";
+import { ReactKeycloakProvider } from "@react-keycloak/web";
+import { privateRountes, publicRoutes } from "@routes/index";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { DefaultLayout } from "./layouts";
-import { publicRoutes } from "./routes";
 
 function App() {
   return (
-    <Routes>
-      {publicRoutes.map((route, index) => {
-        const Layout = route.layout ?? DefaultLayout;
-        const Page = route.component;
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      initOptions={{
+        onLoad: "login-required",
+        checkLoginIframe: false,
+        enableLogging: true,
+      }}
+    >
+      <Routes>
+        {privateRountes.map((route, index) => {
+          const Layout = route.layout ?? DefaultLayout;
+          const Page = route.component;
 
-        return (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              <Layout>
-                <Page />
-              </Layout>
-            }
-          />
-        );
-      })}
-    </Routes>
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <PrivateRoute>
+                  <Layout>
+                    <Page />
+                  </Layout>
+                </PrivateRoute>
+              }
+            />
+          );
+        })}
+        {publicRoutes.map((route, index) => {
+          const Layout = route.layout ?? DefaultLayout;
+          const Page = route.component;
+
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <Layout>
+                  <Page />
+                </Layout>
+              }
+            />
+          );
+        })}
+      </Routes>
+    </ReactKeycloakProvider>
   );
 }
 
