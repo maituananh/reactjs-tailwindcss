@@ -19,11 +19,12 @@ jobs:
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        DOCKER_IMAGE_NAME: ${{secrets.DOCKER_IMAGE_NAME}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       
     - name: Build the Docker image
-      run: docker build -t reactjs-cicd:latest .
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/${{DOCKER_IMAGE_NAME}}:latest
 
     - name: Push to Dockerhub
-      run: docker push ${{secrets.DOCKER_USERNAME}}/reactjs-cicd:latest
+      run: docker push ${{secrets.DOCKER_USERNAME}}/${{DOCKER_IMAGE_NAME}}:latest
     
