@@ -25,5 +25,5 @@ jobs:
       run: docker build -t reactjs-cicd .
 
     - name: Push to Dockerhub
-      run: docker push anhmai7777/reactjs-cicd:latest .
+      run: docker push ${{secrets.DOCKER_USERNAME}}/reactjs-cicd:latest .
     
