@@ -24,6 +24,9 @@ jobs:
     - name: Build the Docker image
       run: docker build -t reactjs-cicd .
 
+    - name: Docker image tag
+      run: docker tag reactjs-cicd reactjs-cicd:latest .
+
     - name: Push to Dockerhub
       run: docker push ${{secrets.DOCKER_USERNAME}}/reactjs-cicd:latest
     
