@@ -1,6 +1,7 @@
 import { DropdownList, Item, NavBar, Spinner } from "@components/index";
 import routes from "@configs/routes";
-import useSearch from "@hooks/useSearch";
+import { useSearch } from "@hooks/index";
+import { useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { Link, useParams } from "react-router-dom";
 
@@ -12,7 +13,13 @@ function SearchItem() {
     behavior: "smooth",
   });
 
-  const [item, currentPage, updateCurrentPage] = useSearch(value!);
+  const { item, currentPage, updateCurrentPage, updateKeyword } = useSearch(
+    value!
+  );
+
+  useEffect(() => {
+    updateKeyword(value!);
+  }, [value]);
 
   const handleClickPage = (pageNumber: number) => {
     updateCurrentPage(pageNumber);

@@ -49,11 +49,11 @@ function SearchHistory({
       <ul className="flex flex-wrap items-center mt-3 select-none">
         {histories.map((history: string) => (
           <li
-            onClick={() => onClickKeyword(history)}
             key={history}
             className="bg-slate-200 rounded-md p-1 content-center mt-2 mr-2 cursor-pointer"
           >
-            {history}
+            <span onClick={() => onClickKeyword(history)}>{history}</span>
+
             <FontAwesomeIcon
               onClick={() => handleRemoveHistory(history)}
               icon={faXmark}
