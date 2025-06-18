@@ -1,6 +1,6 @@
 import { Item } from "@components/index";
+import { getNewProducts } from "@services/index";
 import { useEffect, useState } from "react";
-import { getNewProducts } from "../../services";
 import { BookData } from "../../types/Book";
 
 function FlashSale() {
